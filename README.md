@@ -9,13 +9,17 @@ Requires [shadcn/ui](https://ui.shadcn.com/docs/installation) to be set up in yo
 Then add any component via:
 
 ```bash
-npx shadcn add Cyrexart/shrimps-cn/<component>
+# npm
+npx shadcn add Cyrexart/shrimps-cn/
+
+# pnpm
+pnpm dlx shadcn add Cyrexart/shrimps-cn/
 ```
 
 For example:
 
 ```bash
-npx shadcn add Cyrexart/shrimps-cn/button
+pnpm dlx shadcn add Cyrexart/shrimps-cn/button
 ```
 
 ## Philosophy
