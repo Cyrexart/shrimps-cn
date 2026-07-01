@@ -37,7 +37,6 @@
 
 @layer base {
   :root {
-    /* ── Light ── */
     --background: oklch(0.99 0.002 80);
     --text: oklch(0.15 0.008 50);
     --brand: oklch(0.65 0.175 46);
