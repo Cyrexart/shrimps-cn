@@ -1,59 +1,74 @@
 @import "tailwindcss";
 
 @theme {
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-full: 9999px;
+
+  --transition-duration-fast: 200ms;
+  --transition-duration-base: 300ms;
+  --ease-spring: cubic-bezier(0.34, 2, 0.64, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
+  --color-text: var(--text);
+  --color-brand: var(--brand);
+  --color-surface: var(--surface);
   --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
+  --color-hover: var(--hover);
+  --color-danger: var(--danger);
   --color-border: var(--border);
   --color-ring: var(--ring);
-  --color-destructive: var(--destructive);
 
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
+  --color-on-brand: var(--on-brand);
+  --color-on-surface: var(--on-surface);
+  --color-on-muted: var(--on-muted);
+  --color-on-hover: var(--on-hover);
+  --color-on-danger: var(--on-danger);
 
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
-  --radius-full: var(--radius-full);
-
-  --ease-spring: var(--ease-spring);
-  --ease-out: var(--ease-out);
-
-  --duration-fast: var(--duration-fast);
-  --duration-base: var(--duration-base);
+  --color-brand-hover: var(--brand-hover);
+  --color-surface-hover: var(--surface-hover);
+  --color-danger-hover: var(--danger-hover);
 }
 
 @layer base {
   :root {
-    --background: oklch(0.98 0.008 80);
-    --foreground: oklch(0.22 0.022 50);
-    --primary: oklch(0.65 0.175 46);
-    --destructive: oklch(0.55 0.165 24);
+    --background: oklch(0.99 0.002 80);
+    --text: oklch(0.15 0.008 50);
+    --brand: oklch(0.65 0.175 46);
+    --danger: oklch(0.55 0.165 30);
 
-    --secondary: oklch(from var(--background) calc(l - 0.05) c h);
-    --secondary-foreground: oklch(from var(--foreground) calc(l + 0.16) c h);
+    --surface: oklch(from var(--background) calc(l - 0.05) c h);
     --muted: oklch(from var(--background) calc(l - 0.05) calc(c + 0.002) h);
-    --muted-foreground: oklch(
-      from var(--foreground) calc(l + 0.33) calc(c - 0.01) h
-    );
-    --accent: oklch(from var(--background) calc(l - 0.03) calc(c + 0.014) h);
-    --accent-foreground: var(--primary);
-    --border: oklch(from var(--background) calc(l - 0.1) calc(c + 0.004) h);
+    --hover: oklch(from var(--surface) calc(l - 0.03) calc(c + 0.014) h);
 
-    --destructive-foreground: var(--background);
-    --primary-foreground: var(--background);
-    --input: var(--border);
-    --ring: var(--primary);
+    --brand-hover: oklch(from var(--brand) calc(l - 0.06) c h);
+    --surface-hover: oklch(from var(--surface) calc(l - 0.03) c h);
+    --danger-hover: oklch(from var(--danger) calc(l - 0.06) c h);
+
+    --on-brand: var(--background);
+    --on-danger: var(--background);
+    --on-surface: oklch(from var(--text) calc(l + 0.16) c h);
+    --on-muted: oklch(from var(--text) calc(l + 0.33) calc(c - 0.01) h);
+    --on-hover: var(--brand);
+    --border: oklch(from var(--background) calc(l - 0.1) calc(c + 0.004) h);
+    --ring: var(--brand);
   }
 
   .dark {
-    --background: oklch(0.17 0.016 50);
-    --foreground: oklch(0.93 0.01 80);
-    --primary: oklch(0.73 0.155 48);
-    --destructive: oklch(0.58 0.15 24);
+    --background: oklch(0.2 0.0086 59.18);
+    --text: oklch(0.95 0.004 80);
+    --brand: oklch(0.73 0.155 48);
+    --danger: oklch(0.58 0.15 30);
+
+    --surface: oklch(from var(--background) calc(l + 0.05) c h);
+    --muted: oklch(from var(--background) calc(l + 0.03) c h);
+    --hover: oklch(from var(--background) calc(l + 0.08) c h);
+    --border: oklch(from var(--background) calc(l + 0.12) c h);
   }
 
   *,
@@ -70,7 +85,7 @@
 
   body {
     background-color: var(--background);
-    color: var(--foreground);
+    color: var(--text);
     line-height: 1.6;
   }
 
@@ -108,10 +123,10 @@
   select,
   textarea {
     transition:
-      background-color var(--duration-base) var(--ease-out),
-      border-color var(--duration-base) var(--ease-out),
-      color var(--duration-base) var(--ease-out),
-      opacity var(--duration-base) var(--ease-out);
+      background-color var(--transition-duration-base) var(--ease-out),
+      border-color var(--transition-duration-base) var(--ease-out),
+      color var(--transition-duration-base) var(--ease-out),
+      opacity var(--transition-duration-base) var(--ease-out);
   }
 
   @media (prefers-reduced-motion: reduce) {
