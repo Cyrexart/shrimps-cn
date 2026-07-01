@@ -6,20 +6,18 @@ A small React component library built with shadcn/ui, Tailwind CSS, and TypeScri
 
 Requires [shadcn/ui](https://ui.shadcn.com/docs/installation) to be set up in your project.
 
-Then add any component via:
+## CLI
+
+Shrimps has a dedicated CLI for adding components and setting up the CSS theme.
 
 ```bash
 # npm
-npx shadcn add Cyrexart/shrimps-cn/
+npx shrimps init
+npx shrimps add button
 
 # pnpm
-pnpm dlx shadcn add Cyrexart/shrimps-cn/
-```
-
-For example:
-
-```bash
-pnpm dlx shadcn add Cyrexart/shrimps-cn/button
+pnpm dlx shrimps init
+pnpm dlx shrimps add button
 ```
 
 ## Philosophy
@@ -31,3 +29,7 @@ No npm package to install and keep updated. Each component is copied straight in
 - React + TypeScript
 - Tailwind CSS
 - shadcn/ui / Radix UI primitives
+
+## License
+
+MIT
