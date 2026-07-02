@@ -1,13 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "shrimps",
   "homepage": "https://github.com/Cyrexart/shrimps-cn",
   "items": [
     {
       "name": "button",
-      "type": "registry:ui",
-      "title": "Button",
-      "description": "Pill-shaped button with Shrimps orange primary. Soft, warm, never aggressive.",
+      "type": "ui",
+      "description": "Pill-shaped button with Shrimps orange primary.",
       "dependencies": [
         "@radix-ui/react-slot",
         "class-variance-authority"
@@ -17,8 +15,21 @@
       ],
       "files": [
         {
-          "path": "registry/ui/button.tsx",
-          "type": "registry:ui"
+          "path": "registry/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "ui",
+      "description": "Clean input with focus and error states.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/input.tsx"
         }
       ]
     }
