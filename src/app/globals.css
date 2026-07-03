@@ -33,6 +33,20 @@
   --color-brand-hover: var(--brand-hover);
   --color-surface-hover: var(--surface-hover);
   --color-danger-hover: var(--danger-hover);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+
+  --color-on-success: var(--on-success);
+  --color-on-warning: var(--on-warning);
+  --color-on-info: var(--on-info);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
 }
 
 @layer base {
@@ -40,7 +54,6 @@
     --background: oklch(0.99 0.002 80);
     --text: oklch(0.15 0.008 50);
     --brand: oklch(0.65 0.175 46);
-    --danger: oklch(0.55 0.165 30);
 
     --surface: oklch(from var(--background) calc(l - 0.05) c h);
     --muted: oklch(from var(--background) calc(l - 0.05) calc(c + 0.002) h);
@@ -51,19 +64,48 @@
     --danger-hover: oklch(from var(--danger) calc(l - 0.06) c h);
 
     --on-brand: var(--background);
-    --on-danger: var(--background);
     --on-surface: oklch(from var(--text) calc(l + 0.16) c h);
     --on-muted: oklch(from var(--text) calc(l + 0.33) calc(c - 0.01) h);
     --on-hover: var(--brand);
     --border: oklch(from var(--background) calc(l - 0.1) calc(c + 0.004) h);
     --ring: var(--brand);
+
+    --danger: oklch(0.55 0.165 30);
+    --success: oklch(0.52 0.148 145);
+    --warning: oklch(0.62 0.148 70);
+    --info: oklch(0.57 0.135 232);
+
+    --on-danger: var(--background);
+    --on-success: oklch(0.98 0.008 145);
+    --on-warning: oklch(0.18 0.022 70);
+    --on-info: oklch(0.98 0.008 232);
+
+    --chart-1: var(--brand);
+    --chart-2: oklch(0.52 0.148 145);
+    --chart-3: oklch(0.57 0.135 232);
+    --chart-4: oklch(0.58 0.135 305);
+    --chart-5: oklch(0.62 0.148 70);
   }
 
   .dark {
     --background: oklch(0.2 0.0086 59.18);
     --text: oklch(0.95 0.004 80);
     --brand: oklch(0.73 0.155 48);
+
     --danger: oklch(0.58 0.15 30);
+    --success: oklch(0.66 0.148 145);
+    --warning: oklch(0.74 0.14 68);
+    --info: oklch(0.68 0.125 232);
+
+    --on-success: oklch(0.96 0.02 145);
+    --on-warning: oklch(0.96 0.015 75);
+    --on-info: oklch(0.96 0.018 232);
+
+    --chart-1: var(--brand);
+    --chart-2: oklch(0.66 0.148 145);
+    --chart-3: oklch(0.68 0.125 232);
+    --chart-4: oklch(0.68 0.13 305);
+    --chart-5: oklch(0.74 0.14 68);
 
     --surface: oklch(from var(--background) calc(l + 0.05) c h);
     --muted: oklch(from var(--background) calc(l + 0.03) c h);
