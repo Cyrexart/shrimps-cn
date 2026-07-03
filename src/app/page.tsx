@@ -1,8 +1,23 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
 export default function Home() {
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+
+  async function handleClick() {
+    setLoading(true)
+    setSuccess(false)
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    setLoading(false)
+    setSuccess(true)
+    setTimeout(() => setSuccess(false), 2000)
+  }
+
   return (
     <main className="min-h-screen bg-background text-foreground p-8 flex flex-col gap-8">
       <section id="buttons" className="flex gap-4">
@@ -11,6 +26,9 @@ export default function Home() {
         <Button variant="secondary" disabled>Disabled</Button>
         <Button variant="outline">Outline</Button>
         <Button variant="destructive">Destructive</Button>
+        <Button loading={loading} success={success} onClick={handleClick}>
+          Submit
+        </Button>
         <Button variant="ghost">Ghost</Button>
         <Button variant="link">Link</Button>
       </section>
