@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
 export default function Home() {
@@ -16,6 +17,19 @@ export default function Home() {
       <section id="inputs" className="flex gap-4">
         <Input placeholder="default" className="w-fit" />
         <Input disabled placeholder="disabled" className="w-fit" />
+      </section>
+      <section id="cards" className="flex gap-4">
+        <Card>
+          <CardHeader>
+            Header
+          </CardHeader>
+          <CardContent>
+            Card Content
+          </CardContent>
+          <CardFooter>
+            Footer
+          </CardFooter>
+        </Card>
       </section>
     </main>
   )
