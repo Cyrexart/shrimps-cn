@@ -1,12 +1,22 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import { Loader2, Check } from "lucide-react"
 import { cn } from "@/lib/utils"
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+  loading?: boolean
+  success?: boolean
+  ref?: React.Ref<HTMLButtonElement>
+}
 
 const buttonVariants = cva(
   [
     "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium",
-    "transition-all duration-base [transition-timing-function:var(--ease-out)]",
+    "transition-all duration-base ease-out",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     "disabled:pointer-events-none disabled:opacity-40",
     "active:scale-[0.85]",
@@ -15,18 +25,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-brand text-on-brand hover:bg-brand-hover shadow-sm",
-        secondary:
-          "bg-surface text-on-surface hover:bg-surface-hover",
-        outline:
-          "bg-transparent text-text border-2 border-brand hover:bg-brand hover:text-on-brand",
-        ghost:
-          "bg-transparent text-text hover:bg-brand hover:text-on-brand",
-        destructive:
-          "bg-danger text-on-danger hover:bg-danger-hover shadow-sm",
-        link:
-          "bg-transparent text-brand underline-offset-4 hover:underline p-0 h-auto",
+        default: "bg-brand text-on-brand hover:brightness-90 shadow-sm",
+        secondary: "bg-surface text-on-surface hover:bg-hover",
+        outline: "bg-transparent text-text border-2 border-brand hover:bg-brand hover:text-on-brand",
+        ghost: "bg-transparent text-text hover:bg-brand hover:text-on-brand",
+        destructive: "bg-danger text-on-danger hover:brightness-90 shadow-sm",
+        link: "bg-transparent text-brand underline-offset-4 hover:underline p-0 h-auto",
       },
       size: {
         sm: "h-8  rounded-full px-4 text-xs  gap-1.5 [&_svg]:size-3.5",
@@ -43,24 +47,49 @@ const buttonVariants = cva(
   }
 )
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-  VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+const ICON_SIZES = new Set(["icon", "icon-sm"])
+
+function useButton({
+  loading,
+  success,
+  disabled,
+  size,
+}: Pick<ButtonProps, "loading" | "success" | "disabled" | "size">) {
+  return {
+    isDisabled: disabled || loading || success,
+    isLoading: loading,
+    isSuccess: success,
+    isIconButton: ICON_SIZES.has(size ?? ""),
+  }
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        ref={ref}
-        className={cn(buttonVariants({ variant, size, className }))}
-        {...props}
-      />
-    )
-  }
-)
+
+function Button({ className, variant, size, asChild = false, loading, success, disabled, ref, children, ...props }: ButtonProps) {
+  const { isDisabled, isLoading, isSuccess, isIconButton } = useButton({ loading, success, disabled, size })
+  const Comp = asChild && !isLoading && !isSuccess ? Slot : "button"
+
+  return (
+    <Comp
+      ref={ref}
+      disabled={isDisabled}
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    >
+      {isLoading ? (
+        <>
+          <Loader2 className="animate-spin" />
+          {!isIconButton && children}
+        </>
+      ) : isSuccess ? (
+        <>
+          <Check />
+          {!isIconButton && children}
+        </>
+      ) : children}
+    </Comp>
+  )
+}
+
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
