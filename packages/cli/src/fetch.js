@@ -1,4 +1,5 @@
-const BASE_URL = "https://raw.githubusercontent.com/Cyrexart/shrimps-cn/main";
+const BASE_URL =
+  "https://raw.githubusercontent.com/Cyrexart/shrimps-cn/main/packages/ui";
 
 async function fetchRegistry() {
   const res = await fetch(`${BASE_URL}/registry.json`);
