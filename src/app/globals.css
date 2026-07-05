@@ -19,7 +19,6 @@
   --color-brand: var(--brand);
   --color-surface: var(--surface);
   --color-muted: var(--muted);
-  --color-hover: var(--hover);
   --color-danger: var(--danger);
   --color-border: var(--border);
   --color-ring: var(--ring);
@@ -27,7 +26,6 @@
   --color-on-brand: var(--on-brand);
   --color-on-surface: var(--on-surface);
   --color-on-muted: var(--on-muted);
-  --color-on-hover: var(--on-hover);
   --color-on-danger: var(--on-danger);
 
   --color-brand-hover: var(--brand-hover);
@@ -55,61 +53,58 @@
     --text: oklch(0.15 0.008 50);
     --brand: oklch(0.65 0.175 46);
 
-    --surface: oklch(from var(--background) calc(l - 0.05) c h);
-    --muted: oklch(from var(--background) calc(l - 0.05) calc(c + 0.002) h);
-    --hover: oklch(from var(--surface) calc(l - 0.03) calc(c + 0.014) h);
-
-    --brand-hover: oklch(from var(--brand) calc(l - 0.06) c h);
-    --surface-hover: oklch(from var(--surface) calc(l - 0.03) c h);
-    --danger-hover: oklch(from var(--danger) calc(l - 0.06) c h);
-
-    --on-brand: var(--background);
-    --on-surface: oklch(from var(--text) calc(l + 0.16) c h);
-    --on-muted: oklch(from var(--text) calc(l + 0.33) calc(c - 0.01) h);
-    --on-hover: var(--brand);
-    --border: oklch(from var(--background) calc(l - 0.1) calc(c + 0.004) h);
-    --ring: var(--brand);
-
     --danger: oklch(0.55 0.165 30);
     --success: oklch(0.52 0.148 145);
     --warning: oklch(0.62 0.148 70);
     --info: oklch(0.57 0.135 232);
-
-    --on-danger: var(--background);
-    --on-success: oklch(0.98 0.008 145);
-    --on-warning: oklch(0.18 0.022 70);
-    --on-info: oklch(0.98 0.008 232);
 
     --chart-1: var(--brand);
     --chart-2: oklch(0.52 0.148 145);
     --chart-3: oklch(0.57 0.135 232);
     --chart-4: oklch(0.58 0.135 305);
     --chart-5: oklch(0.62 0.148 70);
+
+    --on-danger: var(--background);
+    --on-success: oklch(0.98 0.008 145);
+    --on-warning: oklch(0.18 0.022 70);
+    --on-info: oklch(0.98 0.008 232);
+
+    --surface: oklch(from var(--background) calc(l - 0.05) c h);
+    --muted: oklch(from var(--background) calc(l - 0.05) calc(c + 0.002) h);
+
+    --on-brand: var(--background);
+    --on-surface: oklch(from var(--text) calc(l + 0.16) c h);
+    --on-muted: oklch(from var(--text) calc(l + 0.33) calc(c - 0.01) h);
+    --border: oklch(from var(--background) calc(l - 0.1) calc(c + 0.004) h);
+    --ring: var(--brand);
+
+    --brand-hover: oklch(from var(--brand) calc(l - 0.1) calc(c - 0.02) h);
+    --surface-hover: oklch(from var(--surface) calc(l - 0.03) c h);
+    --danger-hover: oklch(from var(--danger) calc(l - 0.1) calc(c - 0.02) h);
   }
 
   .dark {
     --background: oklch(0.2 0.0086 59.18);
     --text: oklch(0.95 0.004 80);
-    --brand: oklch(0.73 0.155 48);
+    --brand: oklch(0.7 0.18 38);
 
-    --danger: oklch(0.58 0.15 30);
-    --success: oklch(0.66 0.148 145);
-    --warning: oklch(0.74 0.14 68);
-    --info: oklch(0.68 0.125 232);
-
-    --on-success: oklch(0.96 0.02 145);
-    --on-warning: oklch(0.96 0.015 75);
-    --on-info: oklch(0.96 0.018 232);
+    --danger: oklch(0.65 0.2 26);
+    --success: oklch(0.66 0.18 145);
+    --warning: oklch(0.74 0.17 68);
+    --info: oklch(0.68 0.6 232);
 
     --chart-1: var(--brand);
     --chart-2: oklch(0.66 0.148 145);
     --chart-3: oklch(0.68 0.125 232);
     --chart-4: oklch(0.68 0.13 305);
-    --chart-5: oklch(0.74 0.14 68);
+    --chart-5: oklch(0.74 0.19 68);
+
+    --on-success: oklch(0.96 0.02 145);
+    --on-warning: oklch(0.96 0.015 75);
+    --on-info: oklch(0.96 0.018 232);
 
     --surface: oklch(from var(--background) calc(l + 0.05) c h);
     --muted: oklch(from var(--background) calc(l + 0.03) c h);
-    --hover: oklch(from var(--background) calc(l + 0.08) c h);
     --border: oklch(from var(--background) calc(l + 0.12) c h);
   }
 
