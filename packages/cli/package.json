@@ -3,12 +3,17 @@
   "version": "0.2.1",
   "private": false,
   "type": "module",
-  "publishCongif": {
+  "publishConfig": {
     "access": "public"
   },
   "bin": {
-    "shrimps-cn": "./src/index.js"
+    "shrimps": "./bin/index.js",
+    "shrimps-cn": "./bin/index.js"
   },
+  "files": [
+    "bin",
+    "src"
+  ],
   "scripts": {
     "build": "echo 'No build step needed yet'"
   },
