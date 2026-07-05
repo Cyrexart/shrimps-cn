@@ -12,9 +12,9 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
         "transition-[color,box-shadow,background-color]",
         "file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-text",
         "placeholder:text-on-muted/40",
-        "focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30",
+        "focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30",
         "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
-        "aria-invalid:border-danger aria-invalid:ring-3 aria-invalid:ring-danger/20",
+        "aria-invalid:border-danger aria-invalid:ring-2 aria-invalid:ring-danger/20",
         className
       )}
       {...props}

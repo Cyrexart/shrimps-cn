@@ -15,29 +15,30 @@ export interface ButtonProps
 
 const buttonVariants = cva(
   [
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium",
+    "inline-flex items-center justify-center",
+    "gap-2",
+    "whitespace-nowrap font-medium",
     "transition-all duration-base ease-out",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    "active:scale-[0.85] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     "disabled:pointer-events-none disabled:opacity-40",
-    "active:scale-[0.85]",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0",
   ].join(" "),
   {
     variants: {
       variant: {
-        default: "bg-brand text-on-brand hover:brightness-90 shadow-sm",
-        secondary: "bg-surface text-on-surface hover:bg-hover",
+        default: "bg-brand text-on-brand hover:bg-brand-hover shadow-sm",
+        secondary: "bg-surface text-on-surface hover:bg-surface-hover",
         outline: "bg-transparent text-text border-2 border-brand hover:bg-brand hover:text-on-brand",
         ghost: "bg-transparent text-text hover:bg-brand hover:text-on-brand",
-        destructive: "bg-danger text-on-danger hover:brightness-90 shadow-sm",
+        destructive: "bg-danger text-on-danger hover:bg-danger-hover shadow-sm",
         link: "bg-transparent text-brand underline-offset-4 hover:underline p-0 h-auto",
       },
       size: {
         sm: "h-8  rounded-full px-4 text-xs  gap-1.5 [&_svg]:size-3.5",
-        default: "h-10 rounded-full px-6 text-sm  gap-2   [&_svg]:size-4",
+        default: "h-10 rounded-full px-6 text-sm [&_svg]:size-4",
         lg: "h-12 rounded-full px-8 text-base gap-2.5 [&_svg]:size-5",
         icon: "h-10 w-10 rounded-full [&_svg]:size-4",
-        "icon-sm": "h-8  w-8  rounded-full [&_svg]:size-3.5",
+        "icon-sm": "h-8 w-8 rounded-full [&_svg]:size-3.5",
       },
     },
     defaultVariants: {
