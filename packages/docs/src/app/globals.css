@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@import "@my-scope/ui/globals.css";
+
+@source "../../node_modules/@my-scope/ui/src";
+@source "../../node_modules/@my-scope/ui/registry";
