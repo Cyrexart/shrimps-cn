@@ -1,6 +1,6 @@
 {
-  "name": "@cyrexart/cli",
-  "version": "0.1.1",
+  "name": "shrimps",
+  "version": "0.2.1",
   "private": false,
   "type": "module",
   "publishCongif": {
