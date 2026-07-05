@@ -1,6 +1,6 @@
 {
   "name": "shrimps",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "private": false,
   "type": "module",
   "publishConfig": {
@@ -19,8 +19,7 @@
   },
   "dependencies": {
     "@my-scope/ui": "workspace:*",
-    "commander": "^12.1.0",
-    "fs-extra": "^11.2.0",
-    "picocolors": "^1.0.1"
+    "chalk": "^5.6.2",
+    "commander": "^12.1.0"
   }
 }
