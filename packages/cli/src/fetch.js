@@ -24,7 +24,7 @@ export async function fetchComponent(name) {
 }
 
 export async function fetchGlobals() {
-  const res = await fetch(`${BASE_URL}/src/app/globals.css`);
+  const res = await fetch(`${BASE_URL}/src/globals.css`);
   if (!res.ok) throw new Error("Could not fetch globals.css");
   return res.text();
 }
