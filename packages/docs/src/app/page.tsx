@@ -33,6 +33,7 @@ export default function Home() {
         <Button variant="ghost">Ghost</Button>
         <Button variant="link">Link</Button>
       </section>
+
       <section id="inputs" className="flex gap-4">
         <Input placeholder="default" className="w-fit" />
         <Input
@@ -46,6 +47,7 @@ export default function Home() {
         <Input placeholder="error" error="Some error" className="w-fit" />
         <Input disabled placeholder="disabled" className="w-fit" />
       </section>
+
       <section id="cards" className="flex gap-4">
         <Card>
           <CardHeader>
