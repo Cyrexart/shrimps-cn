@@ -8,7 +8,6 @@ import { useState } from "react";
 export default function Home() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
-  const [input, setInput] = useState("")
 
   async function handleClick() {
     setLoading(true)
@@ -34,18 +33,9 @@ export default function Home() {
         <Button variant="link">Link</Button>
       </section>
 
-      <section id="inputs" className="flex gap-4">
-        <Input placeholder="default" className="w-fit" />
-        <Input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onClear={() => setInput("")}
-          placeholder="clearable"
-          clearable
-          className="w-fit"
-        />
-        <Input placeholder="error" error="Some error" className="w-fit" />
-        <Input disabled placeholder="disabled" className="w-fit" />
+      <section id="inputs" className="flex gap-4 max-w-4xl">
+        <Input placeholder="default" />
+        <Input disabled placeholder="disabled" />
       </section>
 
       <section id="cards" className="flex gap-4">
