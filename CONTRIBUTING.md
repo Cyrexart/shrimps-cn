@@ -48,15 +48,10 @@ Every component file must follow top-to-bottom layout order to ensure maximum re
 
 ## Tailwind CSS classes
 
-When styling with Tailwind CSS utility classes, always arrange them in separate lines via the `cn` function in the following order:
+Class ordering is handled automatically — do not manually order or reorder Tailwind classes.
 
-1. LAYOUT — `display`, `position`, `flex`, `grid`, `overflow`, `z-index`
-2. SIZE — `w-*`, `h-*`, `min-w-*`, `max-w-*`
-3. SPACING — `p-*`, `px-*`, `py-*`, `m-*`, `gap-*`
-4. APPEARANCE — `bg-*`, `border-*`, `rounded-*`, `shadow-*`, `outline-*`, `ring-*`, `opacity-*`, and `text-*` when used for **color** (e.g. `text-danger`)
-5. TYPOGRAPHY — `text-*` when used for **size** (e.g. `text-sm`), plus `font-*`, `whitespace-*`, `leading-*`, `tracking-*`
-6. TRANSITION — `transition-*`, `duration-*`, `ease-*`, `animate-*`
-7. INTERACTIVE — `hover:*`, `active:*`, `focus-visible:*`
-8. DISABLED — `disabled:*`
-9. STATE & VALIDATION — `aria-invalid:*`, `data-[state]:*`, `has-[...]:*`, `group-*:`, `peer-*:`
-10. CHILDREN — `placeholder:*`, `file:*`, `[&_svg]:*`
+- `prettier-plugin-tailwindcss` runs automatically via a Lefthook pre-commit hook.
+- On every commit, staged `.ts`/`.tsx` files are formatted and re-staged before the commit completes — sorting applies to `class`, `className`, and anything inside `cn()`/`cva()` calls.
+- The order follows Tailwind's own official, non-configurable sort order.
+- Write classes in whatever order is convenient while coding — they'll be corrected automatically on commit.
+- Running `pnpm install` wires up the hook automatically via the `prepare` script — no manual setup needed.
