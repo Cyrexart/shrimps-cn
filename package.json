@@ -4,8 +4,15 @@
   "engines": {
     "node": ">=20.0.0"
   },
+  "scripts": {
+    "prepare": "lefthook install"
+  },
   "devDependencies": {
     "eslint": "^9.39.4",
-    "eslint-config-next": "16.2.9"
+    "eslint-config-next": "16.2.9",
+    "lefthook": "^2.1.10",
+    "prettier": "^3.9.5",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "tailwindcss": "^4"
   }
 }
