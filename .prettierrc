@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ],
+  "tailwindFunctions": [
+    "cn",
+    "cva"
+  ],
+  "tailwindStylesheet": "./packages/ui/src/globals.css"
+}
