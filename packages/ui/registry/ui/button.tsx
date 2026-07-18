@@ -1,42 +1,36 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-import { Loader2, Check } from "lucide-react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { Loader2, Check } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-  VariantProps<typeof buttonVariants> {
-  asChild?: boolean
-  loading?: boolean
-  success?: boolean
-  ref?: React.Ref<HTMLButtonElement>
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+  loading?: boolean;
+  success?: boolean;
+  ref?: React.Ref<HTMLButtonElement>;
 }
 
 const buttonVariants = cva(
-  [
-    "inline-flex items-center justify-center",
-    "gap-2",
-    "whitespace-nowrap font-medium",
-    "transition-all duration-base ease-out",
-    "active:scale-[0.85] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-    "disabled:pointer-events-none disabled:opacity-40",
-    "[&_svg]:pointer-events-none [&_svg]:shrink-0",
-  ].join(" "),
+  "inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap transition-all duration-base ease-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none active:scale-[0.85] disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-brand text-on-brand hover:bg-brand-hover shadow-sm",
+        default: "bg-brand text-on-brand shadow-sm hover:bg-brand-hover",
         secondary: "bg-surface text-on-surface hover:bg-surface-hover",
-        outline: "bg-transparent text-text border-2 border-brand hover:bg-brand hover:text-on-brand",
+        outline:
+          "border-2 border-brand bg-transparent text-text hover:bg-brand hover:text-on-brand",
         ghost: "bg-transparent text-text hover:bg-brand hover:text-on-brand",
-        destructive: "bg-danger text-on-danger hover:bg-danger-hover shadow-sm",
-        link: "bg-transparent text-brand underline-offset-4 hover:underline p-0 h-auto",
+        destructive: "bg-danger text-on-danger shadow-sm hover:bg-danger-hover",
+        link: "h-auto bg-transparent p-0 text-brand underline-offset-4 hover:underline",
       },
       size: {
-        sm: "h-8  rounded-full px-4 text-xs  gap-1.5 [&_svg]:size-3.5",
+        sm: "h-8 gap-1.5 rounded-full px-4 text-xs [&_svg]:size-3.5",
         default: "h-10 rounded-full px-6 text-sm [&_svg]:size-4",
-        lg: "h-12 rounded-full px-8 text-base gap-2.5 [&_svg]:size-5",
+        lg: "h-12 gap-2.5 rounded-full px-8 text-base [&_svg]:size-5",
         icon: "h-10 w-10 rounded-full [&_svg]:size-4",
         "icon-sm": "h-8 w-8 rounded-full [&_svg]:size-3.5",
       },
@@ -45,10 +39,10 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
-)
+  },
+);
 
-const ICON_SIZES = new Set(["icon", "icon-sm"])
+const ICON_SIZES = new Set(["icon", "icon-sm"]);
 
 function useButton({
   loading,
@@ -61,14 +55,28 @@ function useButton({
     isLoading: loading,
     isSuccess: success,
     isIconButton: ICON_SIZES.has(size ?? ""),
-  }
+  };
 }
 
-
-function Button({ className, variant, size, asChild = false, loading, success, disabled, ref, children, ...props }: ButtonProps) {
-  const { isDisabled, isLoading, isSuccess, isIconButton } = useButton({ loading, success, disabled, size })
-  const Comp = asChild && !isLoading && !isSuccess ? Slot : "button"
-
+function Button({
+  className,
+  variant,
+  size,
+  asChild = false,
+  loading,
+  success,
+  disabled,
+  ref,
+  children,
+  ...props
+}: ButtonProps) {
+  const { isDisabled, isLoading, isSuccess, isIconButton } = useButton({
+    loading,
+    success,
+    disabled,
+    size,
+  });
+  const Comp = asChild && !isLoading && !isSuccess ? Slot : "button";
   return (
     <Comp
       ref={ref}
@@ -86,11 +94,12 @@ function Button({ className, variant, size, asChild = false, loading, success, d
           <Check />
           {!isIconButton && children}
         </>
-      ) : children}
+      ) : (
+        children
+      )}
     </Comp>
-  )
+  );
 }
+Button.displayName = "Button";
 
-Button.displayName = "Button"
-
-export { Button, buttonVariants }
+export { Button, buttonVariants };
