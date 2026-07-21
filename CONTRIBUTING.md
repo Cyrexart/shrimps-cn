@@ -55,3 +55,51 @@ Class ordering is handled automatically — do not manually order or reorder Tai
 - The order follows Tailwind's own official, non-configurable sort order.
 - Write classes in whatever order is convenient while coding — they'll be corrected automatically on commit.
 - Running `pnpm install` wires up the hook automatically via the `prepare` script — no manual setup needed.
+
+## Component Checklist
+
+Applies to every component, written from scratch or adapted from an external source.
+
+### Primitives
+
+Base UI, or raw ARIA if Base UI has no equivalent. No Radix, no other headless libs, without an explicit decision.
+
+### Styling
+
+OKLCH tokens only (`@theme` / `:root` / `.dark`).
+
+* No hex values, no default Tailwind palette classes.
+* No arbitrary values (`w-[137px]`) unless justified with a comment.
+* Check both light and dark mode against an existing component (e.g. `Card`).
+
+### data-slot
+
+Every meaningful sub-element gets a `data-slot`, following existing naming (`input-group-control`, `card-header`). Never copy a slot name from another component without verifying it fits the new context — this is the current bug on `Input`.
+
+### Accessibility
+
+* ARIA state on the real element, not a styled `<div>`.
+* Keyboard behavior matches the ARIA APG pattern for the component type.
+* Focus-visible styling matches the rest of the library.
+
+### API
+
+Props follow existing naming (`variant`, `size`). Variants via `class-variance-authority`. Test composed inside `Field`, `InputGroup`, or `Card` if applicable, not only standalone.
+
+### Housekeeping
+
+* Passes Lefthook/prettier with no exceptions.
+* No `any`, no untyped prop spreading.
+* File/export naming matches package conventions.
+* Ships as its own conventional commit.
+
+### Final check
+
+Place it next to existing components. If it doesn't look like the same person built it, it isn't done.
+
+### Adapting an existing component
+
+Everything above still applies. In addition:
+
+* Strip the source's styling and props before starting; rebuild from our tokens.
+* Confirm the license permits reuse; note the origin in the PR.
