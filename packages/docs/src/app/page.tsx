@@ -1,56 +1,36 @@
-"use client"
+"use client";
 
 import { Button } from "@my-scope/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@my-scope/ui/card";
 import { Input } from "@my-scope/ui/input";
-import { useState } from "react";
 
 export default function Home() {
-  const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
-
-  async function handleClick() {
-    setLoading(true)
-    setSuccess(false)
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    setLoading(false)
-    setSuccess(true)
-    setTimeout(() => setSuccess(false), 2000)
-  }
-
   return (
-    <main className="min-h-screen bg-background text-foreground p-8 flex flex-col gap-8">
+    <main className="text-foreground flex min-h-screen flex-col gap-8 bg-background p-8">
       <section id="buttons" className="flex gap-4">
         <Button>Primary</Button>
         <Button variant="secondary">Secondary</Button>
-        <Button variant="secondary" disabled>Disabled</Button>
+        <Button variant="secondary" disabled>
+          Disabled
+        </Button>
         <Button variant="outline">Outline</Button>
         <Button variant="destructive">Destructive</Button>
-        <Button loading={loading} success={success} onClick={handleClick}>
-          Submit
-        </Button>
         <Button variant="ghost">Ghost</Button>
         <Button variant="link">Link</Button>
       </section>
 
-      <section id="inputs" className="flex gap-4 max-w-4xl">
+      <section id="inputs" className="flex max-w-4xl gap-4">
         <Input placeholder="default" />
         <Input disabled placeholder="disabled" />
       </section>
 
       <section id="cards" className="flex gap-4">
         <Card>
-          <CardHeader>
-            Header
-          </CardHeader>
-          <CardContent>
-            Card Content
-          </CardContent>
-          <CardFooter>
-            Footer
-          </CardFooter>
+          <CardHeader>Header</CardHeader>
+          <CardContent>Card Content</CardContent>
+          <CardFooter>Footer</CardFooter>
         </Card>
       </section>
     </main>
-  )
+  );
 }
