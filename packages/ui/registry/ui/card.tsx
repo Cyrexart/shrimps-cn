@@ -3,18 +3,15 @@ import { cn } from "@/lib/utils";
 
 export interface CardProps extends React.ComponentProps<"div"> {
   size?: "default" | "sm";
-  hoverable?: boolean;
 }
 
-function Card({ className, size = "default", hoverable, ...props }: CardProps) {
+function Card({ className, size = "default", ...props }: CardProps) {
   return (
     <div
       data-slot="card"
       data-size={size}
       className={cn(
         "flex flex-col gap-(--card-spacing) overflow-hidden rounded-lg bg-surface py-(--card-spacing) text-sm text-on-surface shadow-md ring-1 ring-text/5 transition-all duration-base ease-out [--card-spacing:--spacing(6)] has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(4)] dark:ring-text/10",
-        hoverable &&
-          "cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:ring-text/10",
         className,
       )}
       {...props}
