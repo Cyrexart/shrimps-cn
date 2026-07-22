@@ -64,6 +64,15 @@ Applies to every component, written from scratch or adapted from an external sou
 
 Base UI, or raw ARIA if Base UI has no equivalent. No Radix, no other headless libs, without an explicit decision.
 
+### Component API design
+
+A component does one thing. If a prop changes what the component fundamentally is, that's two components sharing a name — split it.
+
+* No boolean props for behavior or appearance. Use a variant prop (string union, `class-variance-authority`) for mutually exclusive states, composition for structural differences, and a wrapper component for a specific configuration used often enough to deserve its own name.
+* Conflicting states go in a single union, not parallel booleans — `status: "idle" | "loading" | "error" | "success"`, not `isLoading` / `isError` / `isSuccess`.
+* Parts that coordinate state (open/closed, active tab, selected item) share it through context, not props threaded down manually — split into `Component.Part` pieces backed by a provider.
+* Default to `children` for consumer-controlled content. Use a render prop only when the child needs data that's only available from the parent at render time.
+
 ### Styling
 
 OKLCH tokens only (`@theme` / `:root` / `.dark`).
