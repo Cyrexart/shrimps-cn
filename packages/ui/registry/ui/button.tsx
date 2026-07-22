@@ -1,29 +1,21 @@
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
+import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
-import { Loader2, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface ButtonProps
-  extends
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-  loading?: boolean;
-  success?: boolean;
-  ref?: React.Ref<HTMLButtonElement>;
-}
+  extends ButtonPrimitive.Props, VariantProps<typeof buttonVariants> {}
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap transition-all duration-base ease-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none active:scale-[0.85] disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap transition-all duration-base ease-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none active:scale-[0.85] disabled:pointer-events-none disabled:opacity-40 aria-invalid:border-danger aria-invalid:ring-2 aria-invalid:ring-danger/40 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default: "bg-brand text-on-brand shadow-sm hover:bg-brand-hover",
         secondary: "bg-surface text-on-surface hover:bg-surface-hover",
         outline:
-          "border-2 border-brand bg-transparent text-text hover:bg-brand hover:text-on-brand",
-        ghost: "bg-transparent text-text hover:bg-brand hover:text-on-brand",
+          "border-2 border-brand bg-transparent text-text hover:bg-brand hover:text-on-brand aria-expanded:bg-brand aria-expanded:text-on-brand",
+        ghost:
+          "bg-transparent text-text hover:bg-brand hover:text-on-brand aria-expanded:bg-brand aria-expanded:text-on-brand",
         destructive: "bg-danger text-on-danger shadow-sm hover:bg-danger-hover",
         link: "h-auto bg-transparent p-0 text-brand underline-offset-4 hover:underline",
       },
@@ -42,64 +34,14 @@ const buttonVariants = cva(
   },
 );
 
-const ICON_SIZES = new Set(["icon", "icon-sm"]);
-
-function useButton({
-  loading,
-  success,
-  disabled,
-  size,
-}: Pick<ButtonProps, "loading" | "success" | "disabled" | "size">) {
-  return {
-    isDisabled: disabled || loading || success,
-    isLoading: loading,
-    isSuccess: success,
-    isIconButton: ICON_SIZES.has(size ?? ""),
-  };
-}
-
-function Button({
-  className,
-  variant,
-  size,
-  asChild = false,
-  loading,
-  success,
-  disabled,
-  ref,
-  children,
-  ...props
-}: ButtonProps) {
-  const { isDisabled, isLoading, isSuccess, isIconButton } = useButton({
-    loading,
-    success,
-    disabled,
-    size,
-  });
-  const Comp = asChild && !isLoading && !isSuccess ? Slot : "button";
+function Button({ className, variant, size, ...props }: ButtonProps) {
   return (
-    <Comp
-      ref={ref}
-      disabled={isDisabled}
+    <ButtonPrimitive
+      data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
-    >
-      {isLoading ? (
-        <>
-          <Loader2 className="animate-spin" />
-          {!isIconButton && children}
-        </>
-      ) : isSuccess ? (
-        <>
-          <Check />
-          {!isIconButton && children}
-        </>
-      ) : (
-        children
-      )}
-    </Comp>
+    />
   );
 }
-Button.displayName = "Button";
 
 export { Button, buttonVariants };
