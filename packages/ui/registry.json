@@ -5,11 +5,10 @@
     {
       "name": "button",
       "type": "ui",
-      "description": "Pill-shaped button with Shrimps orange primary.",
+      "description": "A pill-shaped button with variant, size, and disabled states, built on Base UI.",
       "dependencies": [
-        "@radix-ui/react-slot",
-        "class-variance-authority",
-        "lucide-react"
+        "@base-ui/react",
+        "class-variance-authority"
       ],
       "registryDependencies": [],
       "files": [
@@ -19,13 +18,11 @@
     {
       "name": "input",
       "type": "ui",
-      "description": "Clean input with focus, error and clear states.",
+      "description": "A text input with focus, error, and disabled states, built on Base UI.",
       "dependencies": [
-        "lucide-react"
+        "@base-ui/react"
       ],
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": [],
       "files": [
         "registry/ui/input.tsx"
       ]
@@ -33,7 +30,7 @@
     {
       "name": "card",
       "type": "ui",
-      "description": "Surface card with few sections.",
+      "description": "A surface container with header, title, description, action, content, and footer sections.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -41,4 +38,18 @@
       ]
     }
   ]
+}        "registry/ui/input.tsx"
+]
+},
+{
+"name": "card",
+"type": "ui",
+"description": "Surface card with few sections.",
+"dependencies": [],
+"registryDependencies": [],
+"files": [
+"registry/ui/card.tsx"
+]
+}
+]
 }
