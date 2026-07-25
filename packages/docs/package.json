@@ -5,7 +5,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint .",
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@my-scope/ui": "workspace:*",
