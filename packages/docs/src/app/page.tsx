@@ -8,6 +8,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@my-scope/ui/input-group";
+import { Label } from "@my-scope/ui/label";
 import { Textarea } from "@my-scope/ui/textarea";
 import { InfoIcon, SearchIcon } from "lucide-react";
 
@@ -63,6 +64,12 @@ export default function Home() {
             <InfoIcon className="size-4" />
           </InputGroupAddon>
         </InputGroup>
+      </section>
+      <section id="input-groups" className="flex gap-4">
+        <div className="flex flex-col gap-3">
+          <Label>Label</Label>
+          <Input placeholder="basic" />
+        </div>
       </section>
     </main>
   );
