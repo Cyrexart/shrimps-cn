@@ -9,6 +9,7 @@ import {
   InputGroupInput,
 } from "@my-scope/ui/input-group";
 import { Label } from "@my-scope/ui/label";
+import { Switch } from "@my-scope/ui/switch";
 import { Textarea } from "@my-scope/ui/textarea";
 import { InfoIcon, SearchIcon } from "lucide-react";
 
@@ -70,6 +71,10 @@ export default function Home() {
           <Label>Label</Label>
           <Input placeholder="basic" />
         </div>
+      </section>
+      <section id="switches" className="flex gap-4">
+        <Switch id="base" />
+        <Label htmlFor="base">Switch</Label>
       </section>
     </main>
   );
