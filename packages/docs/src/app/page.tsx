@@ -11,6 +11,16 @@ import {
 import { Label } from "@my-scope/ui/label";
 import { Switch } from "@my-scope/ui/switch";
 import { Textarea } from "@my-scope/ui/textarea";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@my-scope/ui/dialog";
 import { InfoIcon, SearchIcon } from "lucide-react";
 
 export default function Home() {
@@ -75,6 +85,29 @@ export default function Home() {
       <section id="switches" className="flex gap-4">
         <Switch id="base" />
         <Label htmlFor="base">Switch</Label>
+      </section>
+      <section id="dialogs" className="flex gap-4">
+        <Dialog>
+          <DialogTrigger>
+            <Button>Open Dialog</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Want to close the dialog?</DialogTitle>
+              <DialogDescription>
+                You can do it by clicking on Exit button, pressing ESC key or
+                clicking outside of dialog.
+              </DialogDescription>
+            </DialogHeader>
+
+            <DialogFooter>
+              <Button variant="secondary">Stay</Button>
+              <DialogClose>
+                <Button variant="destructive">Exit</Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </section>
     </main>
   );
