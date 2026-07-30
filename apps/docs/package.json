@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+  "name": "@shrimps/docs",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -9,7 +9,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@my-scope/ui": "workspace:*",
+    "@shrimps/ui": "workspace:*",
     "@radix-ui/react-slot": "^1.3.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

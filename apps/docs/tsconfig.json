@@ -27,10 +27,11 @@
         "./src/*"
       ],
       "@/lib/utils": [
-        "../ui/src/lib/utils"
+        "../../packages/ui/src/lib/utils"
       ]
     }
   },
+  "extends": "../../tsconfig.json",
   "include": [
     "next-env.d.ts",
     "**/*.ts",
