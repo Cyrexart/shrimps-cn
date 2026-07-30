@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@import "@shrimps/ui/globals.css";
+
+@source "../../../../packages/ui/registry/**/*.{ts,tsx}";
+@source "../../../../packages/ui/src/**/*.{ts,tsx}";

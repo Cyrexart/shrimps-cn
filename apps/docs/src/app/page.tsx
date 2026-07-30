@@ -1,16 +1,16 @@
 "use client";
 
-import { Button } from "@my-scope/ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "@my-scope/ui/card";
-import { Input } from "@my-scope/ui/input";
+import { Button } from "@shrimps/ui/button";
+import { Card, CardContent, CardFooter, CardHeader } from "@shrimps/ui/card";
+import { Input } from "@shrimps/ui/input";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@my-scope/ui/input-group";
-import { Label } from "@my-scope/ui/label";
-import { Switch } from "@my-scope/ui/switch";
-import { Textarea } from "@my-scope/ui/textarea";
+} from "@shrimps/ui/input-group";
+import { Label } from "@shrimps/ui/label";
+import { Switch } from "@shrimps/ui/switch";
+import { Textarea } from "@shrimps/ui/textarea";
 import {
   Dialog,
   DialogClose,
@@ -20,7 +20,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@my-scope/ui/dialog";
+} from "@shrimps/ui/dialog";
 import { InfoIcon, SearchIcon } from "lucide-react";
 
 export default function Home() {
@@ -88,9 +88,7 @@ export default function Home() {
       </section>
       <section id="dialogs" className="flex gap-4">
         <Dialog>
-          <DialogTrigger>
-            <Button>Open Dialog</Button>
-          </DialogTrigger>
+          <DialogTrigger render={<Button> Open Dialog</Button>} />
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Want to close the dialog?</DialogTitle>
@@ -102,9 +100,9 @@ export default function Home() {
 
             <DialogFooter>
               <Button variant="secondary">Stay</Button>
-              <DialogClose>
-                <Button variant="destructive">Exit</Button>
-              </DialogClose>
+              <DialogClose
+                render={<Button variant="destructive">Exit</Button>}
+              />
             </DialogFooter>
           </DialogContent>
         </Dialog>

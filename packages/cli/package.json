@@ -18,7 +18,7 @@
     "build": "echo 'No build step needed yet'"
   },
   "dependencies": {
-    "@my-scope/ui": "workspace:*",
+    "@shrimps/ui": "workspace:*",
     "chalk": "^5.6.2",
     "commander": "^12.1.0"
   }
