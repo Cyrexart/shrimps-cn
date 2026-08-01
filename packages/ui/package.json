@@ -12,6 +12,7 @@
       "default": "./src/globals.css"
     },
     "./*": "./registry/ui/*.tsx",
+    "./blocks/*": "./registry/blocks/*.tsx",
     "./lib/*": "./src/lib/*.ts"
   },
   "dependencies": {
