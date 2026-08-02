@@ -26,8 +26,11 @@
       "@/*": [
         "./src/*"
       ],
-      "@/lib/utils": [
-        "../../packages/ui/src/lib/utils"
+      "@/lib/*": [
+        "../../packages/ui/src/lib/*"
+      ],
+      "@/hooks/*": [
+        "../../packages/ui/src/hooks/*"
       ]
     }
   },

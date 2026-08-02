@@ -11,7 +11,7 @@ import {
 import { Label } from "@shrimps/ui/label";
 import { Switch } from "@shrimps/ui/switch";
 import { Textarea } from "@shrimps/ui/textarea";
-import { Header } from "@shrimps/ui/blocks/header";
+import { Header } from "@shrimps/ui/blocks/header/header";
 import {
   Dialog,
   DialogClose,
@@ -23,25 +23,26 @@ import {
   DialogTrigger,
 } from "@shrimps/ui/dialog";
 import { InfoIcon, SearchIcon } from "lucide-react";
+import { AppNavLink } from "@shrimps/ui/blocks/header/app-nav-link";
 
 export default function Home() {
   return (
     <>
       <Header>
-        <Header.Brand>
+        <Header.Brand className="mr-8">
           <span>Acme</span>
         </Header.Brand>
 
         <Header.Nav>
-          <Header.NavLink href="/product">Product</Header.NavLink>
-          <Header.NavLink href="/pricing" aria-current="page">
-            Pricing
-          </Header.NavLink>
-          <Header.NavLink href="/docs">Docs</Header.NavLink>
+          <AppNavLink href="/">Product</AppNavLink>
+          <AppNavLink href="/pricing">Pricing</AppNavLink>
+          <AppNavLink href="/docs">Docs</AppNavLink>
         </Header.Nav>
 
         <Header.Actions>
-          <Button variant="ghost">Sign in</Button>
+          <AppNavLink indicator="none" href="/auth/sing-in">
+            Sing in
+          </AppNavLink>
           <Button>Get started</Button>
         </Header.Actions>
 
@@ -54,7 +55,7 @@ export default function Home() {
           </Header.MobileMenu.Panel>
         </Header.MobileMenu>
       </Header>
-      <main className="text-foreground mx-auto flex min-h-screen max-w-4xl flex-col gap-8 bg-background p-8">
+      <main className="text-foreground mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-8 bg-background p-8">
         <section id="buttons" className="flex gap-4">
           <Button>Primary</Button>
           <Button variant="secondary">Secondary</Button>
@@ -67,7 +68,7 @@ export default function Home() {
           <Button variant="link">Link</Button>
         </section>
 
-        <section id="inputs" className="flex max-w-4xl gap-4">
+        <section id="inputs" className="flex gap-4">
           <Input placeholder="default" />
           <Input disabled placeholder="disabled" />
         </section>
