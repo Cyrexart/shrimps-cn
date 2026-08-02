@@ -41,7 +41,7 @@ export default function Home() {
 
         <Header.Actions>
           <AppNavLink indicator="none" href="/auth/sing-in">
-            Sing in
+            Sign in
           </AppNavLink>
           <Button>Get started</Button>
         </Header.Actions>
