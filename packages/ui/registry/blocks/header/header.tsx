@@ -10,6 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@shrimps/ui/sheet";
+import { mergeProps, useRender } from "@base-ui/react";
 
 type HeaderVariantProps = VariantProps<typeof headerVariants>;
 
@@ -20,7 +21,10 @@ type HeaderBrandProps = React.ComponentPropsWithoutRef<"div">;
 
 type HeaderNavProps = React.ComponentPropsWithoutRef<"nav">;
 
-type HeaderNavLinkProps = React.ComponentPropsWithoutRef<"a">;
+interface HeaderNavLinkProps
+  extends
+    useRender.ComponentProps<"a">,
+    VariantProps<typeof headerNavLinkVariants> {}
 
 type HeaderActionsProps = React.ComponentPropsWithoutRef<"div">;
 
@@ -30,7 +34,7 @@ type HeaderMobileMenuTriggerProps = React.ComponentProps<typeof SheetTrigger>;
 
 type HeaderMobileMenuPanelProps = React.ComponentProps<typeof SheetContent>;
 
-const headerVariants = cva("z-40 h-16 w-full px-4 sm:px-6 lg:px-8", {
+const headerVariants = cva("z-40 h-20 w-full px-4 sm:px-6 lg:px-8", {
   variants: {
     position: {
       static: "relative",
@@ -49,6 +53,22 @@ const headerVariants = cva("z-40 h-16 w-full px-4 sm:px-6 lg:px-8", {
   },
 });
 
+const headerNavLinkVariants = cva(
+  "text-2xl font-medium text-on-surface transition-colors hover:text-brand md:text-xl",
+  {
+    variants: {
+      indicator: {
+        underline:
+          "aria-[current=page]:underline aria-[current=page]:underline-offset-6",
+        none: "",
+      },
+    },
+    defaultVariants: {
+      indicator: "underline",
+    },
+  },
+);
+
 function Header({
   className,
   position,
@@ -64,7 +84,7 @@ function Header({
     >
       <div
         data-slot="header-container"
-        className="mx-auto flex h-full w-full max-w-7xl items-center gap-4"
+        className="max-w-8xl mx-auto flex h-full w-full items-center gap-4"
       >
         {children}
       </div>
@@ -90,30 +110,32 @@ function HeaderNav({ className, ...props }: HeaderNavProps) {
     <nav
       data-slot="header-nav"
       aria-label="Primary"
-      className={cn("hidden items-center gap-6 md:flex", className)}
+      className={cn("hidden items-center gap-8 md:flex", className)}
       {...props}
     />
   );
 }
 
-function HeaderNavLink({ className, ...props }: HeaderNavLinkProps) {
-  return (
-    <a
-      data-slot="header-nav-link"
-      className={cn(
-        "text-2xl font-medium text-on-surface transition-colors hover:text-text aria-[current=page]:text-text md:text-sm",
-        className,
-      )}
-      {...props}
-    />
-  );
+function HeaderNavLink(props: HeaderNavLinkProps) {
+  const { render, indicator, className, ...otherProps } = props;
+
+  const baseProps = {
+    "data-slot": "header-nav-link",
+    className: cn(headerNavLinkVariants({ indicator }), className),
+  };
+
+  return useRender({
+    defaultTagName: "a",
+    render,
+    props: mergeProps<"a">(baseProps, otherProps),
+  });
 }
 
 function HeaderActions({ className, ...props }: HeaderActionsProps) {
   return (
     <div
       data-slot="header-actions"
-      className={cn("ml-auto flex items-center gap-2", className)}
+      className={cn("ml-auto flex items-center gap-8", className)}
       {...props}
     />
   );
