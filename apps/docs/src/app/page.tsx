@@ -43,7 +43,7 @@ export default function Home() {
           <AppNavLink indicator="none" href="/auth/sing-in">
             Sign in
           </AppNavLink>
-          <Button>Get started</Button>
+          <Button size="lg">Get started</Button>
         </Header.Actions>
 
         <Header.MobileMenu>
